@@ -4,9 +4,9 @@
 	<title>HI</title>
 	<style>
 	*{box-sizing:border-box}
-	ul{margin:0;padding:0}
-	li{list-style-type:none;}
-	body{margin:auto;padding:0;width:80%}
+	.sidebar ul{margin:0;padding:0}
+	.sidebar li{list-style-type:none;}
+	body{margin:auto;padding:0;width:80%;background-color:#eee;}
 	img{display:block;}
 	a{text-decoration:none}
 	.clearfix::after{content:"\20";height:0;display:block;clear:both;}
@@ -22,10 +22,13 @@
 	.navbar nav a{padding:5px 10px;color:white;}
 	.navbar nav a:hover{color:#aa0}
 	
-	.sidebar{font-size:12px;width:150px}
+	.sidebar{font-size:12px;width:150px;display:inline-block;}
 	.sidebar .tabhead{background-color:#c8c;padding:8px 5px;border-radius:5px;margin:5px 0px;}
 	.sidebar a{display:block;padding:10px 5px 10px 5px;background-color:#0d9;border-bottom:1px solid #ded6d5}
 	.sidebar a:hover{background-color:#af9}
+	
+	.main{margin-top:5px;display:inline-block;vertical-align:top;background-color:#eed}
+	
 	</style>
 </head>
 <body>
@@ -84,16 +87,110 @@
 			</ul>
 		</div>
 	</div>
-	<style>.main{background-color:red;width:calc(100% - 200px - 200px)}</style>
+	<style>
+		.divider{border-bottom:1px solid #d9c5c5;}
+		.main{width:calc(100% - 400px);}
+		.main-bar{font-size:12px;line-height:30px;background-color:#dfcbcb}
+		.main-bar .backward{float:left;}
+		.main-bar .forward{float:right;}
+		article p, article li{font-size:14px;}
+		
+		.demobox h5{margin:5px 0px 5px 8px;}
+		.demobox p{margin:5px 8px;background-color:#fff;line-height:40px;height:40px;}
+		.demobox button{margin:5px 0px 5px 8px; background-color:green;border:none;padding:5px 5px;font-size:12px;}
+		.demobox{margin:16px 0px; background-image: linear-gradient(to bottom, #fed , #d0e69c);}
+		
+		table{border-collapse:collapse;font-size:10px;width:100%;text-align:left;}
+		table, th, td{border:1px solid black;}
+		th{background-color:#555}
+		
+
+	</style>
 	<div class="main">
-		<div class="main-bar">
-			ss
+		<div class="main-bar clearfix">
+			<div class="backward">后退</div>
+			<div class="forward">前进</div>
 		</div>
-		<div class="main-head"></div>
-		<div class="divider"></div>
-		<div class="content"></div>
-		<div class="divider"></div>
-		<div class="content"></div>
+		<article>
+			<h1>HTML属性</h1>
+			<div class="divider"></div>
+			<p>属性是 HTML 元素提供的附加信息。</p>
+			<div class="divider"></div>
+			<h3>HTML 属性</h3>
+			<ul>
+				<li>HTML 元素可以设置属性</li>
+				<li>属性可以在元素中添加附加信息</li>
+				<li>属性一般描述于开始标签</li>
+				<li>属性总是以名称/值对的形式出现，比如：name="value"。</li>
+			</ul>
+			<div class="divider"></div>
+			<h3>属性实例</h3>
+			<p>HTML 链接由标签定义。链接的地址在 href 属性中指定：</p>
+			<div class="demobox">
+				<h5>实例</h5>
+				<p>a href="http://www.runoob.com"这是一个链接</p>
+				<button type="button">尝试一下</button>
+			</div>
+			<div class="divider"></div>
+			<h3>HTML 属性常用引用属性值</h3>
+			<p>属性值应该始终被包括在引号内。
+			双引号是最常用的，不过使用单引号
+			也没有问题。Remark提示: 在某些个
+			别的情况下，比如属性值本身就含有双引号，
+			那么您必须使用单引号，例如：name='John "ShotGun" Nelson'</p>
+			<h3>HTML 提示：使用小写属性</h3>
+			<p>属性和属性值对大小写不敏感。
+			不过，万维网联盟在其 HTML 4 推
+			荐标准中推荐小写的属性/属性值。
+			而新版本的 (X)HTML 要求使用小写属性。</p>
+			<div class="divider"></div>
+			<h3>HTML 属性参考手册</h3>
+			<p>查看完整的HTML属性列表: HTML 标签参考手册。
+			下面列出了适用于大多数 HTML 元素的属性：</p>
+			<table>
+				<tr>
+					<th>属性</th><th>描述</th>
+				</tr>
+				<tr>
+					<td>class</td><td>为html元素定义一个或多个类名（classname）(类名从样式文件引入)</td>
+				</tr>
+				<tr>
+					<td>id</td><td>定义元素的唯一id</td>
+				</tr>
+				<tr>
+					<td>style</td><td>规定元素的行内样式（inline style）</td>
+				</tr>
+				<tr>
+					<td>title</td><td>描述了元素的额外信息 (作为工具条使用)</td>
+				</tr>
+			</table>
+		</article><br>
+		<div class="main-bar clearfix">
+			<div class="backward">后退</div>
+			<div class="forward">前进</div>
+		</div>
+	</div>
+	<style>
+		.rightnav{display:inline-block;vertical-align:top;font-size:14px;background-color:#fdd;text-align:center;margin-top:5px;}
+		.rightnav h4{margin:0px;padding-top:5px;padding-bottom:5px;}
+		.rightnav ul{margin:0;padding:0;}
+		.rightnav li{list-style-type:none;}
+		.rightnav li a{color:black;padding: 5px 10px;display:block;width:150px;}
+		.rightnav li a:hover{background-color:#99f}
+	</style>
+	<div class="rightnav">
+		<h4>分类导航</h4>
+		<ul>
+			<li><a href="#">HTML/CSS</a></li>
+			<li><a href="#">HTML/CSS</a></li>
+			<li><a href="#">HTML/CSS</a></li>
+			<li><a href="#">HTML/CSS</a></li>
+			<li><a href="#">HTML/CSS</a></li>
+			<li><a href="#">HTML/CSS</a></li>
+			<li><a href="#">HTML/CSS</a></li>
+			<li><a href="#">HTML/CSS</a></li>
+			<li><a href="#">HTML/CSS</a></li>
+		</ul>
 	</div>
 </body>
 <html>
