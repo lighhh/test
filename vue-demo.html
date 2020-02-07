@@ -66,7 +66,7 @@ Vue.component("todo-item",{
 			<input type="text" v-on:keyup.enter="addItem" v-model="item" placeholder="add a todo item">
 			<button type="button" v-on:click="addItem" style="margin-left:20px;">additem</button>
 			<button type="button" v-on:click="savaAllEdit" style="margin-left:20px">save all</button><hr>
-			<li v-for="todo,index in todos" :style="itemStyle">
+			<li v-for="todo,index in todos" :style="itemStyle" v-on:keyup.enter="addItem">
 				<input v-if="todo.isEditState" v-model="todo.title"/>
 				<span v-else>{{todo.title}}</span>
 				<button v-on:click="removeItem(index)" v-bind:style="buttonStyle">remove</button>
