@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <style>
+	.clearfix::{
+		content:"\20";
+		height:0px;
+		display:block;
+		clear:both;
+	}
+	#test{
+		width:200px;
+		height:200px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+	}
+  </style>
+  
+</head>
+<body>
+<div id="test"></div>
+<i class="el-icon-setting">设置</i>
+
+  <div id="app">
+		<i class="el-icon-setting">设置</i><hr>
+		<el-row>
+			<el-button>default</el-button>
+			<el-button type="primary">primary</el-button>
+			<el-button type="success">success</el-button>
+			<el-button type="info">info</el-button>
+			<el-button type="warning">warning</el-button>
+			<el-button type="danger">danger</el-button>
+		</el-row>
+		<hr>
+		<el-row>
+			<el-button plain>default</el-button>
+			<el-button plain type="primary">primary</el-button>
+			<el-button plain type="success">success</el-button>
+			<el-button plain type="info">info</el-button>
+			<el-button plain type="warning">warning</el-button>
+			<el-button plain type="danger">danger</el-button>
+		</el-row>
+		<hr>
+		<el-row>
+			<el-button round>default</el-button>
+			<el-button round type="primary">primary</el-button>
+			<el-button round type="success">success</el-button>
+			<el-button round type="info">info</el-button>
+			<el-button round type="warning">warning</el-button>
+			<el-button round type="danger">danger</el-button>
+		</el-row>
+		<hr>
+		<el-row>
+			<el-button icon="el-icon-search" circle></el-button>
+			<el-button type="primary" icon="el-icon-edit" circle></el-button>
+			<el-button type="success" icon="el-icon-check" circle></el-button>
+			<el-button type="info" icon="el-icon-message" circle></el-button>
+			<el-button type="warning" icon="el-icon-star-off" circle></el-button>
+			<el-button type="danger" icon="el-icon-delete" circle></el-button>
+		</el-row>
+		<hr>
+		<el-row>
+			<el-button type="text">文字按钮</el-button>
+			<el-button type="text" disabled>文字按钮</el-button>
+			<el-button type="primary" icon="el-icon-edit"></el-button>
+			<el-button type="primary" icon="el-icon-share"></el-button>
+			<el-button type="danger" icon="el-icon-delete"></el-button>
+			<el-button type="primary" icon="el-icon-search">搜索</el-button>
+			<el-button type="primary" icon="el-icon-upload">上传</el-button>
+		</el-row>
+		<hr>
+		<el-row>
+			<el-button-group>
+				<el-button type="primary" icon="el-icon-arrow-left">上一页</el-button>
+				<el-button type="primary" icon="el-icon-arrow-right">上一页</el-button>
+			</el-button-group>
+			<el-button-group>
+				<el-button icon="el-icon-edit" :loading="true"></el-button>
+				<el-button type="primary" icon="el-icon-edit" :loading="true"></el-button>
+				<el-button type="primary" icon="el-icon-share"></el-button>
+				<el-button type="primary" icon="el-icon-delete"></el-button>
+			</el-button-group>
+		</el-row>
+		<hr>
+		<el-row>
+			<el-button>默认按钮</el-button>
+			<el-button size="meddle">中等按钮</el-button>
+			<el-button size="small">小型按钮</el-button>
+			<el-button size="mini">超小按钮</el-button>
+		</el-row>
+		<hr>
+		<el-row>
+			<el-link href="#" target="_blank">默认链接</el-link>
+			<el-link type="primary">主要链接</el-link>
+			<el-link type="info">信息链接</el-link>
+			<el-link type="warning">警告链接</el-link>
+			<el-link type="success">成功链接</el-link>
+			<el-link type="danger">警告链接</el-link>
+			<el-link type="danger" :underline="false">警告链接</el-link>
+			<el-link type="danger" disabled>警告链接</el-link>
+			<el-link icon="el-icon-edit">编辑</el-link>
+			<el-link>查看<i class="el-icon-view"></i></el-link>
+		</el-row>
+  </div>
+</body>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { visible: false }
+      }
+    })
+  </script>
+</html>
