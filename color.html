@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<style>
+	:root{
+		--green: lightgreen;
+		--lightpink: lightpink;
+		--primary:#303133;
+		--common:#606266;
+		--secondary:#909399;
+		--placeholder:#C0C4CC;
+		
+		--border1:#DCDFE6;
+		--border2:#E4E7ED;
+		--border3:#EBEEF5;
+		--border4:#F2F6FC;
+		
+		
+	}
+</style>
+<style>
+	.container{
+		font-size:14px;
+	}
+	.container .item{
+		display:inline-block;
+		padding:5px 8px;
+		border:1px solid var(--border1);
+		color:var(--primary);
+	}
+	.container .item:hover{
+		background-color:var(--lightpink)
+	}
+	.fa:hover{
+		transform: scale(1.2,1.2);
+	}
+	.wrapper div:nth-child(1){display:inline-block;}
+	.wrapper div:nth-child(n+2){display:inline-block;margin-left:10px;}
+	
+	svg:hover{
+		transform: scale(1,2);
+		transition:all 2s;
+	}
+</style>
+<body>
+<div class="container">
+	<div class="item">
+		<span>Dashboard</span>
+		<span>&nbsp;<i class="fa fa-times-circle"></i></span>
+	</div>
+	<div class="item">
+		<span>Dashboard</span>
+		<span>&nbsp;<i class="fa fa-times-circle-o"></i></span>
+	</div>
+	<div class="wrapper" style="margin-top:15px">
+	<div style="width:100px; height:100px; background-color:#FF0000">red</div>
+	<div style="width:100px; height:100px; background-color:#00FF00">green</div>
+	<div style="width:100px; height:100px; background-color:#0000FF">blue</div>
+	<div style="width:100px; height:100px; background-color:#FFFF00">yellow=red+green</div>
+	<div style="width:100px; height:100px; background-color:#FF00FF">magenta=red+blue</div>
+	<div style="width:100px; height:100px; background-color:#00FFFF">cyan=green+blue</div>
+	<div style="width:100px; height:100px; background-color:#800080">purple=#800080</div>
+	</div>
+	<div class="wrapper" style="margin-top:15px">
+		<div style="width:200px;height:200px; background-image:linear-gradient(to bottom left,red,black)"></div>
+	</div>
+	<svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px">
+		<circle cx="50" cy="50" r="50" stroke="var(--common)" stroke-width="1" fill="red" />
+	</svg> 
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
