@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>aa</title>
+<style>
+#myCanvas{
+border:1px solid red;
+}
+</style>
+</head>
+<body>
+<!-- 32*24  clientWidth(contentBox), offsetWidth(borderBox), scrollWidth, innerWidth, outerWidth-->
+<canvas id="myCanvas" tabindex="0" width="800px" height="600px"></canvas>
+<button type="button" onclick="game.start()">start</button>
+<button type="button" onclick="game.pause()">pause</button>
+<button type="button" onclick="game.stop()">stop</button>
+</body>
+<script>
+
+var myCanvas=document.getElementById("myCanvas");
+var ctx=myCanvas.getContext("2d");
+ctx.fillStyle="#FF0000";
+<!-- ctx.fillRect(0,0,25,25); -->
+
+function Snake(name){
+	this.name = name;
+	this.moveDirection = "right";
+	this.nextDirection = "right";
+	this.speed = 1;
+	this.nodesize = 25;
+	this.nodesplit = 1;
+	this.nodes = []
+
+}
+Snake.prototype.init = function(length){
+	
+	if(typeof(length)==="underfined"){console.error("'length' is underfined")}
+	for(let n=0;n<length;n++){
+		ctx.fillRect(0+n*this.nodesize+n*this.nodesplit,0, this.nodesize, this.nodesize);
+		this.nodes.push([0+n*this.nodesize+n*this.nodesplit, 0])
+	}
+}
+Snake.prototype.move = function(){
+	<!-- ctx.clearRect(0,0,800, 600) -->
+	let curDirection = this.moveDirection
+	let tailnode, headnode;
+	console.log("\n")
+	switch(curDirection){
+		case "right1":
+			for(let n=0;n<this.nodes.length;n++){
+				ctx.fillRect(this.nodes[n][0]+this.nodesize,this.nodes[n][1], this.nodesize, this.nodesize)
+				this.nodes[n][0] = this.nodes[n][0]+this.nodesize
+			}
+			break;
+		case "right":
+			tailnode = this.nodes.shift()
+			headnode = this.nodes[this.nodes.length-1]
+			headnode = [headnode[0]+this.nodesize+this.nodesplit, headnode[1]]
+			ctx.clearRect(tailnode[0], tailnode[1], this.nodesize, this.nodesize)
+			ctx.fillRect(headnode[0], headnode[1], this.nodesize, this.nodesize)
+			this.nodes.push(headnode)
+			break;
+		case "left":
+			tailnode = this.nodes.shift()
+			headnode = this.nodes[this.nodes.length-1]
+			headnode = [headnode[0]-this.nodesize-this.nodesplit, headnode[1]]
+			ctx.clearRect(tailnode[0], tailnode[1], this.nodesize, this.nodesize)
+			ctx.fillRect(headnode[0], headnode[1], this.nodesize, this.nodesize)
+			this.nodes.push(headnode)
+		break;
+		case "up":
+			tailnode = this.nodes.shift()
+			headnode = this.nodes[this.nodes.length-1]
+			headnode = [headnode[0], headnode[1]-this.nodesize-this.nodesplit]
+			ctx.clearRect(tailnode[0], tailnode[1], this.nodesize, this.nodesize)
+			ctx.fillRect(headnode[0], headnode[1], this.nodesize, this.nodesize)
+			this.nodes.push(headnode)
+		break;
+		case "down":
+			tailnode = this.nodes.shift()
+			headnode = this.nodes[this.nodes.length-1]
+			headnode = [headnode[0], headnode[1]+this.nodesize+this.nodesplit]
+			ctx.clearRect(tailnode[0], tailnode[1], this.nodesize, this.nodesize)
+			ctx.fillRect(headnode[0], headnode[1], this.nodesize, this.nodesize)
+			this.nodes.push(headnode)
+		break;
+		default:break;
+	}
+	this.moveDirection = this.nextDirection;
+}
+
+Snake.prototype.isOutOfBoundary = function(left, top, right, bottom){
+		for(let node of this.nodes){
+			if(node[0]<left || node[0]>right || node[1]<top || node[1]>bottom){
+				return true
+			}
+		}
+		return false
+}
+Snake.prototype.isSelfDevourer = function(){
+	let arr = this.nodes
+	for(var i=0;i<arr.length-1;i++){
+		for(var j=i+1;j<arr.length;j++){
+			if(arr[i][0]===arr[j][0] && arr[i][1]==arr[j][1]){
+				return true
+			}
+		}
+	}
+	return false
+}
+
+
+myCanvas.addEventListener("keydown", debonuce(function(event){
+	switch(event.code){
+		case "ArrowUp":if(game.snake.moveDirection!=="down"){game.snake.nextDirection="up";}break;
+		case "ArrowDown":if(game.snake.moveDirection!=="up"){game.snake.nextDirection="down"};break;
+		case "ArrowLeft":if(game.snake.moveDirection!=="right"){game.snake.nextDirection="left"};break;
+		case "ArrowRight":if(game.snake.moveDirection!=="left"){game.snake.nextDirection="right"};break;
+	}
+}, 0), true)
+
+function Game(snake){
+	this.snake = snake
+	this.snake.init(4);
+	this.canvasWidth = 800
+	this.canvasHeight = 600
+
+	this.isGameOver = function(){if(this.snake.isOutOfBoundary(0,0,800,600) || this.snake.isSelfDevourer()){return true }else{return false}}
+	this.run = function(){
+		if(this.isGameOver()){
+			this.stop()
+		}
+		this.snake.move()
+	}
+	
+	this.start = function(){
+		let that = this
+		this.driver = setInterval(function(){that.run()}, 400)
+	}
+	
+	this.stop = function(){alert("结束游戏"); clearInterval(this.driver)}
+	this.pause = function(){clearInterval(this.driver)}
+
+}
+function debonuce(fn, delay){
+	var timer
+	return function(){
+		if(timer)clearTimeout(timer)
+		timer = setTimeout(()=>{
+			timer = "underfined"
+			fn.apply(null, arguments)
+		},delay||0)
+	}
+}
+
+var game = new Game(new Snake('hoooo'))
+
+</script>
+</html>
