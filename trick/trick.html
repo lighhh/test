@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<style>
+.outer{
+    width: 30%;
+    background: #eee;
+}
+.outer:after{
+    content: 'q';
+    display: block;
+    padding-top: 80%;
+}
+
+.container{
+	position:fixed;
+	left:0;
+	top:0;
+	bottom:0;
+	right:0;
+	text-align:center;
+}
+
+div.container:after{
+	content:"";
+	height:100%;
+	width:0px;
+	vertical-align:middle;
+	display:inline-block;
+	background-color:red;
+	
+}
+
+</style>
+<body>
+<div class="outer"></div>
+
+<div class="container">
+	<div id="content" style="width:100px; height:100px; background-color:#800080; display:inline-block"></div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
