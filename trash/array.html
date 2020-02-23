@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<style>
+*, *::after, *::before{box-sizing:border-box;margin:0;}
+.demo{
+	width:100px;
+	height:100px;
+	
+	margin-left:200px;
+	background-color:#0ff;
+	position:relative;
+	
+}
+.inner{
+	width:50px;
+	height:50px;
+	
+	margin-left:20px;
+	margin-top:10px;
+	background-color:#f0f;
+	position:absolute;
+}
+</style>
+<body>
+<div class="demo">
+	<div class="inner"></div>
+</div>
+
+</body>
+<script>
+var demo = document.getElementsByClassName('demo')[0]
+demo.addEventListener("contextmenu", (event) => {
+	event.preventDefault()
+//	alert(event)
+})
+demo.addEventListener("click", (event) => {
+	alert(event.button)
+})
+var d = demo.firstElementChild
+
+function getRandomStr(num){	
+	str = "qwertyuiopasdfghjklzxcvbnm1234567890"
+	return Array.apply(null, {length:num}).reduce((total="") => total+str[Math.floor(Math.random()*str.length)])
+}
+var arr = Array.apply(null, {length:10}).map(() => getRandomStr(10))
+
+ul = document.createElement('ul')
+Array(...Array(5)).map(() => ul.appendChild(
+	(() => {
+		let li,p
+		li = document.createElement('li')
+		p = document.createElement('p')
+		p.append(document.createTextNode(getRandomStr(20)))
+		li.appendChild(p)
+		return li
+	})()
+))
+console.log(ul)
+//document.body.appendChild(ul)
+
+ul.style="list-style-type:none; padding:0;display:inline-block;border:1px solid #0ff;position:absolute"
+
+for(var el of ul.children){
+	el.firstChild.style="padding:10px 4px;border-bottom:1px solid #0ee"
+}
+ul.lastChild.firstChild.style="padding:10px 4px;border-bottom:0px;"
+
+document.body.oncontextmenu = (event) => {
+	event.preventDefault()
+	ul.style="left:"+event.clientX+"px;top:"+event.clientY+"px;list-style-type:none; padding:0;display:inline-block;border:1px solid #0ff;position:absolute"
+	document.body.appendChild(ul)
+}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
