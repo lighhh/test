@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+
+body{}
+
+.content{
+	width:100px;
+	height:100px;
+	display:inline-block;
+	background-color:#800080;
+}
+</style>
+<body>
+<div id="test"></div>
+<div id="app">
+	<p>{{message}}</p>
+
+	<div class="content" v-clickoutside="clickoutside" v-if="seen" v-on:click="seen=!seen">{{message}}</div>
+</div>
+</body>
+<script>
+  
+ Vue.directive("clickoutside", {
+	bind(el, binding, vnode){
+		method = binding.expression
+		handler = function(e){
+			if(el.contains(e.target)){
+				return false
+			}
+			vnode.context[method](e)
+		}
+		document.addEventListener('click', handler, 0)
+		el['click-outside-handler'] = handler
+	},
+	unbind(el){
+		alert('just unbind custome drirective clickoutside')
+		document.removeEventListener('click', el['click-outside-handler'] )
+	}
+ })
+
+Vue.directive('focus', {
+	inserted:function(el, binding){
+		alert(binding.expression)
+		el.focus()
+	}
+})
+
+new Vue({
+	el:"#app",
+	data(){
+		return {
+			message:'hello vue',
+			seen:true,
+		}
+	},
+	methods:{
+		clickoutside(){
+			alert('you clicked outside of content just..')
+		}
+	}
+})
+
+
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
